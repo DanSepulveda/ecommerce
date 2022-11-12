@@ -16,15 +16,16 @@ const userSchema = new mongoose.Schema({
     trim: true,
     lowercase: true
   },
-  apellido: { type: String, required: true, trim: true },
+  apellido: { type: String, required: true, trim: true, default: 'apellido' },
   correo: { type: String, required: true },
-  edad: { type: Number, required: true, min: 18, max: 150 },
+  edad: { type: Number, min: 18, max: 150 },
   newsletter: Boolean,
   favProducts: [{ type: mongoose.Types.ObjectId, ref: 'product' }],
   addresses: [addressSchema],
   password: { type: String, required: true, minLength: 8 },
   salt: { type: String, required: true },
-  admin: { type: Boolean, required: true, default: false }
+  admin: { type: Boolean, required: true, default: false },
+  permisos: ['user.create', 'user.delete']
 })
 
 userSchema.methods.hashPassword = function (password) {
