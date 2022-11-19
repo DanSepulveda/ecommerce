@@ -17,7 +17,15 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  return <UserContext.Provider value={{ userState, crearCuenta }}>{children}</UserContext.Provider>
+  const logout = () => {
+    dispatch({ type: 'LOGOUT' })
+  }
+
+  return (
+    <UserContext.Provider value={{ userState, crearCuenta, logout }}>
+      {children}
+    </UserContext.Provider>
+  )
 }
 
 export default UserProvider

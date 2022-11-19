@@ -4,11 +4,12 @@ const productSchema = new mongoose.Schema({
   name: String,
   price: Number,
   brand: String,
-  inStock: Boolean,
-  propiedades: [
+  stock: Number,
+  imageUrl: String,
+  properties: [
     {
-      nombreDeLaPropiedad: String,
-      valorDeLaPropiedad: String || Number
+      item: String,
+      value: String
     }
   ]
 })

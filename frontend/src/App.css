@@ -1,0 +1,33 @@
+html * {
+    padding: 0;
+    margin: 0;
+}
+
+main{
+    min-height: 100vh;
+}
+
+
+
+.products-container,
+.main{
+    background-color: #eee;
+}
+
+.card svg{
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.qty-container{
+    min-height: 50px;
+}
+
+.qty-container span{
+    min-width: 30px;
+}
+
+.qty-container button{
+    background-color: unset;
+    border: none;
+}

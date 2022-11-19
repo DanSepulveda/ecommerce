@@ -3,10 +3,10 @@ const User = require('../models/User')
 
 const createProduct = async (req, res) => {
   try {
-    const user = await User.findById(req.auth.id)
-    if (!user.admin) {
-      throw new Error('No estás autorizado')
-    }
+    // const user = await User.findById(req.auth.id)
+    // if (!user.admin) {
+    //   throw new Error('No estás autorizado')
+    // }
     const newProduct = new Product(req.body)
     await newProduct.save()
     res.json({
@@ -14,6 +14,16 @@ const createProduct = async (req, res) => {
       message: 'Producto creado',
       productId: newProduct._id
     })
+  } catch (error) {
+    res.json({ success: false, error: error.message })
+  }
+}
+
+const getTenProducts = async (req, res) => {
+  const qty = req.params.qty
+  try {
+    const products = await Product.find().limit(qty)
+    res.json({ success: true, products })
   } catch (error) {
     res.json({ success: false, error: error.message })
   }
@@ -29,4 +39,4 @@ const createProduct = async (req, res) => {
 //   }
 // }
 
-module.exports = { createProduct }
+module.exports = { createProduct, getTenProducts }
