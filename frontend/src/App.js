@@ -7,6 +7,7 @@ import UserContext from './context/UserContext'
 import Layout from './components/Layout'
 import Cart from './views/Cart'
 import Product from './views/Product'
+import NotFound from './views/NotFound'
 
 function App() {
   const context = useContext(UserContext)
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login tag="login" />} />
         {!token && <Route path="/signup" element={<Login tag="register" />} />}
+        <Route path="/not-found" element={<NotFound />} />
       </Route>
       <Route path="*" element={<Navigate to={token ? '/' : '/not-found'} />} />
     </Routes>

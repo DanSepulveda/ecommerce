@@ -1,8 +1,3 @@
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-import SendIcon from '@mui/icons-material/Send'
-import Stack from '@mui/material/Stack'
-import Box from '@mui/material/Box'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -34,38 +29,37 @@ const Login = ({ tag }) => {
   }
 
   return (
-    <Box sx={{ backgroundColor: '#ccc', minHeight: '100vh' }}>
-      <Stack gap={3}>
-        <h1>{tag === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}</h1>
-        <TextField
-          id="outlined-basic"
-          label="Correo"
-          variant="outlined"
-          size="small"
+    <div className="container d-flex flex-column justify-content-center py-5">
+      <h1 className="text-center mb-4">{tag === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}</h1>
+      <div className="input-group mb-3">
+        <input
+          type="text"
+          className="form-control"
+          placeholder="Correo"
+          aria-label="Correo"
+          aria-describedby="basic-addon1"
           name="correo"
           onChange={(e) => handleInput(e)}
         />
-        <TextField
-          id="outlined-basic"
-          label="Password"
-          variant="outlined"
-          size="small"
-          name="password"
+      </div>
+      <div className="input-group mb-3">
+        <input
           type="password"
+          className="form-control"
+          placeholder="Contraseña"
+          aria-label="Password"
+          name="password"
+          aria-describedby="basic-addon1"
           onChange={(e) => handleInput(e)}
         />
-        <Button
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={handleSign}
-        >
-          {tag === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
-        </Button>
-        <Link to={tag === 'login' ? '/signup' : '/login'}>
-          {tag === 'login' ? 'Crear cuenta' : 'Iniciar sesión'}
-        </Link>
-      </Stack>
-    </Box>
+      </div>
+      <button className="btn btn-dark" onClick={handleSign}>
+        {tag === 'login' ? 'Iniciar sesión' : 'Crear cuenta'}
+      </button>
+      <Link to={tag === 'login' ? '/signup' : '/login'} className="text-center mt-4">
+        {tag === 'login' ? 'Crear cuenta' : 'Iniciar sesión'}
+      </Link>
+    </div>
   )
 }
 

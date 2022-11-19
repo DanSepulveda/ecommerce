@@ -13,13 +13,13 @@ const Navbar = () => {
   ]
 
   return (
-    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-      <div class="container-fluid">
-        <Link class="navbar-brand" to="/">
+    <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
+      <div className="container-fluid">
+        <Link className="navbar-brand" to="/">
           <SiBigcartel />
         </Link>
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarSupportedContent"
@@ -27,13 +27,13 @@ const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             {navItems.map((item) => (
-              <li class="nav-item">
-                <Link to={item.path} key={item.path} className="nav-link">
+              <li className="nav-item" key={item.path}>
+                <Link to={item.path} className="nav-link">
                   {item.text}
                 </Link>
               </li>
@@ -41,8 +41,8 @@ const Navbar = () => {
           </ul>
           <ul>
             <Link to="/cart">
-              <button type="button" class="btn btn-dark">
-                <MdShoppingCart /> <span class="badge">{cartContext.cartState.qty}</span>
+              <button type="button" className="btn btn-dark">
+                <MdShoppingCart /> <span className="badge">{cartContext.cartState.qty}</span>
               </button>
             </Link>
           </ul>

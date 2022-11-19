@@ -22,13 +22,13 @@ const ProductCard = ({ item }) => {
 
   return (
     <div className="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="card">
-        <img src={imageUrl} class="card-img-top" alt="" />
-        <div class="card-body d-flex flex-column align-items-center">
+      <div className="card">
+        <img src={imageUrl} className="card-img-top" alt="" />
+        <div className="card-body d-flex flex-column align-items-center">
           <Link to={`/producto/${_id}`}>
-            <h5 class="card-title">{name}</h5>
+            <h5 className="card-title">{name}</h5>
           </Link>
-          <p class="card-text">${price}</p>
+          <p className="card-text">${price}</p>
           {stock ? (
             <div className="d-flex align-items-center qty-container">
               <button onClick={reducir} disabled={qty === 1}>
