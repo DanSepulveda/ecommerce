@@ -13,7 +13,7 @@ const Home = () => {
 
   const obtenerTop10 = async () => {
     try {
-      const respuesta = await axios.get('http://localhost:4000/api/productos/8')
+      const respuesta = await axios.get('https://ecommerce-udd.herokuapp.com/api/productos/8')
       const { success, products } = respuesta.data
 
       if (success) {

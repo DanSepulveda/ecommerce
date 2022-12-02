@@ -71,6 +71,7 @@ const login = async (req, res) => {
     const { correo, password } = req.body
 
     const user = await User.findOne({ correo })
+
     if (!user) {
       throw new Error('Usuario y/o clave incorrecta')
     }
@@ -80,10 +81,26 @@ const login = async (req, res) => {
       throw new Error('Usuario y/o clave incorrecta')
     }
 
-    res.json({ success: true, mensaje: 'usuario logueado', token: user.generateToken() })
+    res.json({
+      success: true,
+      mensaje: 'usuario logueado',
+      token: user.generateToken(),
+      user: userSinPassword
+    })
   } catch (error) {
     res.json({ success: false, error: error.message })
   }
 }
 
-module.exports = { crearUsuario, obtenerUsuarios, eliminarUsuario, editarUsuario, login }
+const validateToken = async (req, res) => {
+  res.json({ success: true, mensaje: 'usuario logueado' })
+}
+
+module.exports = {
+  crearUsuario,
+  obtenerUsuarios,
+  eliminarUsuario,
+  editarUsuario,
+  login,
+  validateToken
+}

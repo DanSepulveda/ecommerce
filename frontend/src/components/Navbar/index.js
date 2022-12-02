@@ -3,9 +3,11 @@ import { useContext } from 'react'
 import CartContext from '../../context/CartContext'
 import { SiBigcartel } from 'react-icons/si'
 import { MdShoppingCart } from 'react-icons/md'
+import UserContext from '../../context/UserContext'
 
 const Navbar = () => {
   const cartContext = useContext(CartContext)
+  const userContext = useContext(UserContext)
 
   const navItems = [
     { text: 'Inicio', path: '/' },
@@ -39,12 +41,20 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          <ul>
-            <Link to="/cart">
-              <button type="button" className="btn btn-dark">
-                <MdShoppingCart /> <span className="badge">{cartContext.cartState.qty}</span>
-              </button>
-            </Link>
+          <ul className="text-light">
+            {userContext.userState.token ? <li onClick={() => userContext.logout()}>Cerrar sesión</li> : null}
+            {!userContext.userState.token ? (
+              <li>
+                <Link to="/login">Inicia sesión</Link>
+              </li>
+            ) : null}
+            <li>
+              <Link to="/cart">
+                <button type="button" className="btn btn-dark">
+                  <MdShoppingCart /> <span className="badge">{cartContext.cartState.qty}</span>
+                </button>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -7,7 +7,7 @@ const Product = () => {
   const { id } = useParams()
 
   const obtenerProducto = async () => {
-    const respuesta = await axios.get(`http://localhost:4000/api/product/${id}`)
+    const respuesta = await axios.get(`https://ecommerce-udd.herokuapp.com/api/product/${id}`)
     setProduct(respuesta.data.product)
   }
 

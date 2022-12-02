@@ -3,8 +3,10 @@ const userReducers = (state, action) => {
 
   switch (type) {
     case 'REGISTER':
+      localStorage.setItem('token', payload)
       return { token: payload }
     case 'LOGOUT':
+      localStorage.removeItem('token')
       return { token: null }
 
     default:

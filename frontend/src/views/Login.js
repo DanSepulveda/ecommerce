@@ -6,18 +6,13 @@ import UserContext from '../context/UserContext'
 
 const Login = ({ tag }) => {
   const state = useContext(UserContext)
-  console.log(state)
   const [user, setUser] = useState({})
   useEffect(() => {
     document.title = tag === 'login' ? 'Iniciar sesión' : 'Registro'
   }, [tag])
 
-  const iniciarSesion = () => {
-    console.log('iniciar')
-  }
-
   const handleSign = () => {
-    if (tag === 'login') iniciarSesion()
+    if (tag === 'login') state.iniciarSesion(user)
     else state.crearCuenta(user)
   }
 

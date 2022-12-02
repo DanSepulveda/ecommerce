@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react'
 import CartContext from '../../context/CartContext'
 import { MdAddCircle, MdRemoveCircle } from 'react-icons/md'
+import formatter from '../../utils/formatPrice'
 
 const ProductCard = ({ item }) => {
   const context = useContext(CartContext)
@@ -28,7 +29,7 @@ const ProductCard = ({ item }) => {
           <Link to={`/producto/${_id}`}>
             <h5 className="card-title">{name}</h5>
           </Link>
-          <p className="card-text">${price}</p>
+          <p className="card-text">{formatter.format(price)}</p>
           {stock ? (
             <div className="d-flex align-items-center qty-container">
               <button onClick={reducir} disabled={qty === 1}>
